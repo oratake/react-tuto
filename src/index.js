@@ -23,6 +23,19 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // this.state.squares はゲームが進むとこの感じになる予定
+      // [
+      //   'O', null, 'X',
+      //   'X', 'X', 'O',
+      //   'O', null, null,
+      // ]
+      squares: Array(9).fill(null),
+    }
+  }
+
   renderSquare(i) {
     return <Square value={i} />;
   }
