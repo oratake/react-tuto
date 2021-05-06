@@ -27,6 +27,8 @@ class Board extends React.Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice();
+    // 早期に決着した場合、ゲームを終了させるように
+    if (calculateWinner(squares) || squares[i]) return;
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares,
