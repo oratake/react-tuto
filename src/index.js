@@ -11,20 +11,6 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // this.state.squares はゲームが進むとこの感じになる予定
-      // [
-      //   'O', null, 'X',
-      //   'X', 'X', 'O',
-      //   'O', null, null,
-      // ]
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    }
-  }
-
   handleClick(i) {
     const squares = this.state.squares.slice();
     // 早期に決着した場合、ゲームを終了させるように
@@ -79,6 +65,16 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+
   render() {
     return (
       <div className="game">
